@@ -11,7 +11,7 @@ class UserList extends Component {
             return (
                 <li
                     key={user.id}
-                    onClick={() => this.props.selectUser(user)}
+                    onClick={() => this.props.handleSelectUser(user)} // 也可以直接
                 >
                     {user.first} {user.last}
                 </li>
@@ -33,14 +33,15 @@ class UserList extends Component {
 //      > whenever state changes, the UserList will automatically re-render
 function mapStateToProps(state) {
     return {
-        users: state.users
+        users: state.allUsers
     };
 }
 
 // Get actions and pass them as props to to UserList
 //      > now UserList has this.props.selectUser
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({selectUser: selectUser}, dispatch);
+    return bindActionCreators({handleSelectUser: selectUser}, dispatch);
+    // 一旦 handleSelectUser 被调用，就调用 reduxStore.dispatch(action), 其中action就是 handleSelectUser 的返回值
 }
 
 // We don't want to return the plain UserList (component) anymore, we want to return the smart Container

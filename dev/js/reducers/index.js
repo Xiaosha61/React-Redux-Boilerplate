@@ -8,7 +8,7 @@ import ActiveUserReducer from './reducer-active-user';
  * */
 
 const allReducers = combineReducers({
-    users: UserReducer,
+    allUsers: UserReducer,
     activeUser: ActiveUserReducer
 });
 
